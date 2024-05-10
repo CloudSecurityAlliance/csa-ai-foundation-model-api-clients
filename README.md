@@ -42,11 +42,11 @@ Using this as a library:
 
 import os
 
-from foundation_model_api_clients import FoundationModelAPIClient
+from csa_ai_foundation_model_api_clients import FoundationModelAPIClient
 
 def main():
     model_name = 'claude' # or "claude-haiku" or "chatgpt" or "gemini"
-    api_key = "SECRET_API_KEY_VALUE_ # You can remove api_key here if the env variable is set 
+    api_key = "SECRET_API_KEY_VALUE" # You can remove api_key here if the env variable is set 
 
     client = FoundationModelAPIClient(model_name, api_key) # You can remove api_key here if the env variable is set 
 
