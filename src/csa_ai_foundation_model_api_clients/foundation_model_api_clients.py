@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 
-import argparse
 import os
+import argparse
 import json
 from ai_client import claude, chatgpt, gemini
 
 class FoundationModelAPIClient:
-    def __init__(self, model_name):
+    def __init__(self, model_name, api_key=None):
         self.model_name = model_name
-        self.api_key = self.get_model_api_key()
+        self.api_key = api_key or self.get_model_api_key()
         self.model_mapping = self.get_model_mapping()
 
     def get_model_mapping(self):
@@ -37,16 +37,22 @@ class FoundationModelAPIClient:
             raise ValueError("API KEY environment variable not set.")
         return api_key
 
-    def generate_response(self, system_prompt, user_prompt, user_data, args):
+    def generate_response(self, system_prompt, user_prompt, user_data=None, output_file=None, **kwargs):
         user_prompt_full = self.prepare_prompt(user_prompt, user_data)
         if self.model_name.startswith('claude'):
-            return claude.generate_response(self.model_mapping, self.api_key, system_prompt, user_prompt_full, args)
+            response = claude.generate_response(self.model_mapping, self.api_key, system_prompt, user_prompt_full, **kwargs)
         elif self.model_name.startswith('chatgpt'):
-            return chatgpt.generate_response(self.model_mapping, self.api_key, system_prompt, user_prompt_full, args)
+            response = chatgpt.generate_response(self.model_mapping, self.api_key, system_prompt, user_prompt_full, **kwargs)
         elif self.model_name.startswith('gemini'):
-            return gemini.generate_response(self.model_mapping, self.api_key, system_prompt, user_prompt_full, args)
+            response = gemini.generate_response(self.model_mapping, self.api_key, system_prompt, user_prompt_full, **kwargs)
         else:
             raise ValueError(f"Unsupported model: {self.model_name}")
+
+        if output_file:
+            with open(output_file, 'w') as file:
+                json.dump(response, file, indent=2)
+
+        return response
 
     def prepare_prompt(self, user_prompt, user_data):
         if user_data:
@@ -73,7 +79,7 @@ def main():
     with open(args.user_data, 'r', encoding='utf-8') as file:
         user_data = file.read().strip()
 
-    response = client.generate_response(system_prompt, user_prompt, user_data, args)
+    response = client.generate_response(system_prompt, user_prompt, user_data, temperature=args.temperature, max_tokens=args.max_tokens)
     
     with open(args.output_file, 'w', encoding='utf-8') as file:
         json.dump(response, file, sort_keys=True, indent=2)
