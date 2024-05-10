@@ -3,7 +3,7 @@
 import os
 import argparse
 import json
-from ai_client import claude, chatgpt, gemini
+from .ai_client import claude, chatgpt, gemini
 
 class FoundationModelAPIClient:
     def __init__(self, model_name, api_key=None):
