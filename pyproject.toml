@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "csa_ai_foundation_model_api_clients"
-version = "0.0.3"
+version = "0.0.4"
 authors = [
   { name="Kurt Seifried", email="kseifried@cloudsecurityalliance.org" },
 ]
@@ -21,6 +21,12 @@ dependencies = [
   "google-generativeai",
   "openai",
 ]
+
+[project.packages.find]
+where = [
+      	"src"
+]
+
 
 [project.urls]
 Homepage = "https://github.com/CloudSecurityAlliance/csa-ai-foundation-model-api-clients"
