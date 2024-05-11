@@ -6,6 +6,8 @@
 * JSON schema for output format, standardize on a single format with options for each backend
 * handle error conditions (mostly rate limiting errors)
 * can we fix the relative import path so this tool works as a command line tool? Do we simply need to make a seperate .py?
+* max_retries (disable retries by default?)
+* timeout (120 seocnds?)
 
 Future:
 

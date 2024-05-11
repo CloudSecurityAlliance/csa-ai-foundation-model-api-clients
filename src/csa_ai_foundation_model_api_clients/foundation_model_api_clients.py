@@ -7,6 +7,10 @@ from .ai_client import claude, chatgpt, gemini
 
 class FoundationModelAPIClient:
     def __init__(self, model_name, api_key=None):
+        #
+        # Increment this when updating the model
+        #
+        self.csa_ai_foundation_model_api_clients_version = "0.0.9"
         self.model_name = model_name
         self.api_key = api_key or self.get_model_api_key()
         self.model_mapping = self.get_model_mapping()
@@ -59,7 +63,7 @@ class FoundationModelAPIClient:
             return f"{user_prompt}\n{user_data}"
         return user_prompt
 
-def main():
+def main():#
     parser = argparse.ArgumentParser(description='AI Model Client')
     parser.add_argument('--system-prompt', type=str, required=True, help='Path to the file containing the system prompt')
     parser.add_argument('--user-prompt', type=str, required=True, help='Path to the file containing the user content')
