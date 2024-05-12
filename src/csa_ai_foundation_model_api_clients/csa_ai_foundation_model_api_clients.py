@@ -3,14 +3,14 @@
 import os
 import argparse
 import json
-from .ai_client import claude, chatgpt, gemini
+from csa_ai_foundation_model_api_clients.ai_client import claude, chatgpt, gemini
 
 class FoundationModelAPIClient:
     def __init__(self, *, model, api_key=None, system_prompt, system_prompt_type, user_prompt, user_prompt_type, user_data=None, user_data_type, output_file=None, temperature=None, max_tokens=None):
         #
         # Increment this when updating the model
         #
-        self.csa_ai_foundation_model_api_clients_version = "0.1.2"
+        self.csa_ai_foundation_model_api_clients_version = "0.1.5"
         self.model = model
         self.api_key = api_key or self.get_model_api_key()
         self.model_name = self.get_model_mapping()
@@ -134,10 +134,13 @@ def main():#
     # Change it so we call it in a single go, if no output-file is provided, we print the response
     #
     FoundationModelAPIClient(
-        model_name=args.model,
+        model=args.model,
         system_prompt=args.system_prompt,
+        system_prompt_type='file',
         user_prompt=args.user_prompt,
+        user_prompt_type='file',
         user_data=args.user_data,
+        user_data_type='file',
         output_file=args.output_file,
         temperature=args.temperature,
         max_tokens=args.max_tokens
