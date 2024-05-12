@@ -5,19 +5,20 @@
 from foundation_model_api_clients import FoundationModelAPIClient
 
 def main():
-    model_name = 'chatgpt'
-
-    client = FoundationModelAPIClient(model_name)
-
-    system_prompt = "You are a helpful assistant."
-    user_prompt = "What is the capital of France?"
-    user_data = None
+    model = 'chatgpt'
+    system_prompt = "You are a helpful assistant who answers in rhyme."
+    user_prompt = "What is the capital of "
+    user_data = "France?"
     output_file = 'chatgpt-response.json'
 
-    response = client.generate_response(
-        system_prompt,
-        user_prompt,
-        user_data,
+    FoundationModelAPIClient(
+        model=model,
+        system_prompt=system_prompt,
+        system_prompt_type="text",
+        user_prompt=user_prompt,
+        user_prompt_type="text",
+        user_data=user_data,
+        user_data_type="text",
         temperature=0.7,
         max_tokens=100,
         output_file=output_file

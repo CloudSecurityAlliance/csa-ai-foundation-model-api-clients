@@ -60,8 +60,10 @@ def generate_response(model_name, api_key, system_prompt, user_prompt, **kwargs)
     
     try:
         response_message = completion.choices[0].message.content
+        status = "success"
     except AttributeError:
         response_message = None
+        status = "error"
 
     ai_output = {
         "$id": "csa-ai-toolkit-openai-chatgpt4-JSON-v1_00",
@@ -84,6 +86,18 @@ def generate_response(model_name, api_key, system_prompt, user_prompt, **kwargs)
         "completion": serialized_completion
     }
 
-    ai_output = {key: value for key, value in ai_output.items() if value is not None}
+    api_response = {
+        "status": "success",
+        "ai_query_time": TIME_START,
+        "ai_response_time": TIME_FINISHED,
+        "ai_runtime": TIME_TO_RUN,
+        "tokens_input": tokens_input,
+        "tokens_output": tokens_output,
+        "tokens_total": total_tokens,
+        "ai_response_http_status_code": None,
+        "ai_response_stop_reason": None,
+        "ai_response_data": response_message
+    }
 
-    return ai_output
+
+    return api_response
