@@ -2,6 +2,7 @@
 
 ## Code
 
+* fix arguments to handle strings OR files for both library and command line (how to fix __init__?)
 * fix output and move to separate function
 * JSON schema for output format, standardize on a single format with options for each backend
 * handle error conditions (mostly rate limiting errors)

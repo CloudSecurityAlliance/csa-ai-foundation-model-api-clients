@@ -40,25 +40,23 @@ Using this as a library:
 ```
 #!/usr/bin/env python3
 
-import os
-
 from csa_ai_foundation_model_api_clients import FoundationModelAPIClient
 
 def main():
-    model_name = 'claude' # or "claude-haiku" or "chatgpt" or "gemini"
-    api_key = "SECRET_API_KEY_VALUE" # You can remove api_key here if the env variable is set 
+    model = 'claude'
+    system_prompt = "You are a helpful assistant who answers in rhyme."
+    user_prompt = "What is the capital of "
+    user_data = "France?"
+    output_file = 'claude-response.json'
 
-    client = FoundationModelAPIClient(model_name, api_key) # You can remove api_key here if the env variable is set 
-
-    system_prompt = "You are a helpful assistant who speaks in rhymes."
-    user_prompt = "What is the capital of France?"
-    user_data = None
-    output_file = 'response.json'
-
-    response = client.generate_response(
-        system_prompt,
-        user_prompt,
-        user_data,
+    FoundationModelAPIClient(
+        model=model,
+        system_prompt=system_prompt,
+        system_prompt_type="text",
+        user_prompt=user_prompt,
+        user_prompt_type="text",
+        user_data=user_data,
+        user_data_type="text",
         temperature=0.7,
         max_tokens=100,
         output_file=output_file
@@ -68,10 +66,10 @@ if __name__ == '__main__':
     main()
 ```
 
-Using this as a command line tool (you must be in the directory where csa_ai_foundation_model_api_clients.py is because of a relative import path):
+Using this as a command line tool by calling it as a module (please note all prompts MUST be files currently when used as a command line tool):
 
 ```
-./csa_ai_foundation_model_api_clients.py \
+python3 -m csa_ai_foundation_model_api_clients.csa_ai_foundation_model_api_clients \
     --model chatgpt \
     --system system-prompt.txt \
     --user-prompt user-prompt.txt \
@@ -80,4 +78,3 @@ Using this as a command line tool (you must be in the directory where csa_ai_fou
     --temperature 0.9 \
     --max_tokens 2000
 ```
-
