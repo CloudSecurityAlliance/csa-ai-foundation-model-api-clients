@@ -68,10 +68,10 @@ if __name__ == '__main__':
     main()
 ```
 
-Using this as a command line tool (you must be in the directory where foundation_model_api_clients.py is because of a relative import path):
+Using this as a command line tool (you must be in the directory where csa_ai_foundation_model_api_clients.py is because of a relative import path):
 
 ```
-./foundation_model_api_clients.py \
+./csa_ai_foundation_model_api_clients.py \
     --model chatgpt \
     --system system-prompt.txt \
     --user-prompt user-prompt.txt \

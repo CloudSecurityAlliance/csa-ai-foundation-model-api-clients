@@ -2,7 +2,7 @@
 
 # This is a local test for dev
 
-from foundation_model_api_clients import FoundationModelAPIClient
+from csa_ai_foundation_model_api_clients import FoundationModelAPIClient
 
 def main():
     model = 'chatgpt'
