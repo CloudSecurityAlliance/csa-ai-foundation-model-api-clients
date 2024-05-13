@@ -10,7 +10,7 @@ class FoundationModelAPIClient:
         #
         # Increment this when updating the model
         #
-        self.csa_ai_foundation_model_api_clients_version = "0.1.5"
+        self.csa_ai_foundation_model_api_clients_version = "0.1.6"
         self.model = model
         self.api_key = api_key or self.get_model_api_key()
         self.model_name = self.get_model_mapping()
@@ -117,7 +117,7 @@ class FoundationModelAPIClient:
     def generate_response(self):
         if self.model.startswith('claude'):
             api_response = claude.generate_response(self.model_name, self.api_key, self.system_prompt_data, self.user_prompt_final_data)
-        elif self.model.startswith('chatgpt'):
+        elif self.model.startswith('chatgpt') or self.model.startswith('gpt'):
             api_response = chatgpt.generate_response(self.model_name, self.api_key, self.system_prompt_data, self.user_prompt_final_data)
         elif self.model.startswith('gemini'):
             api_response = gemini.generate_response(self.model_name, self.api_key, self.system_prompt_data, self.user_prompt_final_data)
