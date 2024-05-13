@@ -83,11 +83,17 @@ class FoundationModelAPIClient:
 
     def get_model_mapping(self):
         model_mapping = {
-            'chatgpt': 'gpt-4-turbo-preview',
+            # curl https://api.openai.com/v1/models   -H "Authorization: Bearer $OPENAI_CHATGPT_API_KEY"
+            'chatgpt': 'gpt-4o',
+            'gpt': 'gpt-4o',
+            'gpt-4o': 'gpt-4o',
+            'gpt-4': 'gpt-4',
+            # TODO: find API call for claude models
             'claude': 'claude-3-opus-20240229',
             'claude-haiku': 'claude-3-haiku-20240307',
             'claude-sonnet': 'claude-3-sonnet-20240229',
             'claude-opus': 'claude-3-opus-20240229',
+            # TODO: find API call for gemini models
             'gemini': 'gemini-1.5-pro-latest'
         }
         return model_mapping.get(self.model, self.model)
@@ -95,6 +101,7 @@ class FoundationModelAPIClient:
     def get_model_api_key(self):
         model_api_key = {
             'chatgpt': 'OPENAI_CHATGPT_API_KEY',
+            'gpt': 'OPENAI_CHATGPT_API_KEY',
             'claude': 'ANTHROPIC_CLAUDE_API_KEY',
             'claude-haiku': 'ANTHROPIC_CLAUDE_API_KEY',
             'claude-sonnet': 'ANTHROPIC_CLAUDE_API_KEY',
