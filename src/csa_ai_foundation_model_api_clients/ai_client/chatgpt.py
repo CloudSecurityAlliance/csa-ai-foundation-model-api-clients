@@ -15,10 +15,6 @@ def generate_response(model_name, api_key, system_prompt, user_prompt, **kwargs)
         model=model_name,
         temperature=temperature,
         max_tokens=max_tokens,
-        #
-        # Set interactive=false
-        #
-        interactive="false",
         messages=[
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": user_prompt}
