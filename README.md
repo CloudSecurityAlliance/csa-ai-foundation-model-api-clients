@@ -1,5 +1,11 @@
 # Cloud Security Alliance AI Foundation Model API Clients
 
+You can get this library at https://pypi.org/project/csa-ai-foundation-model-api-clients/ or via:
+
+```
+pip install csa-ai-foundation-model-api-clients
+```
+
 This Python library (csa_ai_foundation_model_api_clients) provides API access to text completions for:
 
 * Anthropic Claude 3

@@ -10,7 +10,7 @@ class FoundationModelAPIClient:
         #
         # Increment this when updating the model
         #
-        self.csa_ai_foundation_model_api_clients_version = "0.1.6"
+        self.csa_ai_foundation_model_api_clients_version = "0.1.7"
         self.model = model
         self.api_key = api_key or self.get_model_api_key()
         self.model_name = self.get_model_mapping()
@@ -58,6 +58,11 @@ class FoundationModelAPIClient:
 
         self.api_response = self.generate_response()
 
+        self.system_prompt_absolute_path = os.path.abspath(system_prompt)
+        self.user_prompt_absolute_path = os.path.abspath(user_prompt)
+        self.user_data_absolute_path = os.path.abspath(user_data)
+        self.output_file_absolute_path = os.path.abspath(output_file)
+
         output_data = {
             "dataType": "csa-ai-foundation-model-api-clients-JSON-output",
             "dataVersion": "0.1",
@@ -67,9 +72,14 @@ class FoundationModelAPIClient:
                 "system_prompt": self.system_prompt,
                 "user_prompt": self.user_prompt,
                 "user_data_file": self.user_data,
+                "system_prompt_absolute": self.system_prompt_absolute_path,
+                "user_prompt_absolute": self.user_prompt_absolute_path,
+                "user_data_file_absolute": self.user_data_absolute_path,
+                # TODO: add optional _data for each file
                 "temperature": self.temperature,
                 "max_tokens": self.max_tokens,
-                "output_file": self.output_file
+                "output_file": self.output_file,
+                "output_file_absolute": self.output_file_absolute_path
             },
             "api_response": self.api_response
         }

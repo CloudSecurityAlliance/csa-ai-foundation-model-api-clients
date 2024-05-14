@@ -44,25 +44,10 @@ def generate_response(model_name, api_key, system_prompt, user_prompt, **kwargs)
     # response = model.count_tokens(prompt)
     # print(f"Prompt Token Count: {response.total_tokens}")
 
-    ai_output = {
-        "$id": "csa-ai-toolkit-google-gemini1.5-JSON-v1_00",
-        "metadata": {
-            "system": system_prompt,
-            "user-prompt": user_prompt,
-            "user-data": kwargs.get('user_data'),
-            "output": kwargs.get('output_file'),
-            "model_name": model_name,
-            "temperature": temperature,
-            "max_tokens": max_tokens,
-            "time_start": TIME_START,
-            "time_complete": TIME_FINISHED,
-            "time_to_run": TIME_TO_RUN
-        },
-        "extracted_data": response.text
-    }
-
     api_response = {
         "status": "success",
+        "model_name": model_name,
+        "temperature": temperature,
         "ai_query_time": TIME_START,
         "ai_response_time": TIME_FINISHED,
         "ai_runtime": TIME_TO_RUN,

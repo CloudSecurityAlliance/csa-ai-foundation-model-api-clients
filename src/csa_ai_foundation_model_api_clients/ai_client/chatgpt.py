@@ -65,29 +65,10 @@ def generate_response(model_name, api_key, system_prompt, user_prompt, **kwargs)
         response_message = None
         status = "error"
 
-    ai_output = {
-        "$id": "csa-ai-toolkit-openai-chatgpt4-JSON-v1_00",
-        "metadata": {
-            "system": system_prompt,
-            "user-prompt": user_prompt,
-            "user-data": kwargs.get('user_data'),
-            "output": kwargs.get('output_file'),                        
-            "model_name": model_name,
-            "temperature": temperature,
-            "max_tokens": max_tokens,
-            "tokens_input": tokens_input,
-            "tokens_output": tokens_output,
-            "tokens_total": total_tokens,
-            "time_start": TIME_START,
-            "time_complete": TIME_FINISHED,
-            "time_to_run": TIME_TO_RUN
-        },
-        "extracted_data": response_message,
-        "completion": serialized_completion
-    }
-
     api_response = {
         "status": "success",
+        "model_name": model_name,
+        "temperature": temperature,
         "ai_query_time": TIME_START,
         "ai_response_time": TIME_FINISHED,
         "ai_runtime": TIME_TO_RUN,
@@ -98,6 +79,5 @@ def generate_response(model_name, api_key, system_prompt, user_prompt, **kwargs)
         "ai_response_stop_reason": None,
         "ai_response_data": response_message
     }
-
 
     return api_response
