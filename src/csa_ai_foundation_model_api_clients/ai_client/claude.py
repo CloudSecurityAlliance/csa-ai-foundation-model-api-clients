@@ -25,13 +25,16 @@ def generate_response(model_name, api_key, system_prompt, user_prompt, **kwargs)
     duration = TIME_FINISHED - TIME_START
     TIME_TO_RUN = duration.total_seconds()
 
+# https://docs.anthropic.com/en/api/messages
+
     try:
         tokens_input = completion.usage.input_tokens
         tokens_output = completion.usage.output_tokens
         total_tokens = completion.usage.input_tokens + completion.usage.output_tokens
     except AttributeError:
         tokens_input = tokens_output = total_tokens = None
-    
+
+# TODO: update this to test completion.stop_reason "end_turn"
     try:
         response_message = completion.content[0].text
         status = "success"

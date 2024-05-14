@@ -25,16 +25,19 @@ def generate_response(model_name, api_key, system_prompt, user_prompt, **kwargs)
     duration = TIME_FINISHED - TIME_START
     TIME_TO_RUN = duration.total_seconds()
 
+# https://platform.openai.com/docs/api-reference/chat/create
+
     try:
         tokens_input = completion.usage.prompt_tokens
         tokens_output = completion.usage.completion_tokens
         total_tokens = completion.usage.total_tokens
     except AttributeError:
         tokens_input = tokens_output = total_tokens = None
-    
+
+# TODO: update this to test completion.choices[0].finish_reason "stop"
     try:
         response_message = completion.choices[0].message.content
-        status = "success"
+        status = "success" 
     except AttributeError:
         response_message = None
         status = "error"
@@ -50,7 +53,7 @@ def generate_response(model_name, api_key, system_prompt, user_prompt, **kwargs)
         "tokens_output": tokens_output,
         "tokens_total": total_tokens,
         "ai_response_http_status_code": None,
-        "ai_response_stop_reason": completion.choices[0].message.stop_reason,
+        "ai_response_stop_reason": completion.choices[0].finish_reason,
         "ai_response_data": response_message
     }
 

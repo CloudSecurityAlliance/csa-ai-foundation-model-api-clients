@@ -3,6 +3,7 @@
 import os
 import argparse
 import json
+import uuid
 from csa_ai_foundation_model_api_clients.ai_client import claude, chatgpt, gemini
 
 class FoundationModelAPIClient:
@@ -10,7 +11,7 @@ class FoundationModelAPIClient:
         #
         # Increment this when updating the model
         #
-        self.csa_ai_foundation_model_api_clients_version = "0.1.16"
+        self.csa_ai_foundation_model_api_clients_version = "0.1.19"
         self.model = model
         self.api_key = api_key or self.get_model_api_key()
         self.model_name = self.get_model_mapping()
@@ -63,9 +64,12 @@ class FoundationModelAPIClient:
         self.user_data_absolute_path = os.path.abspath(user_data)
         self.output_file_absolute_path = os.path.abspath(output_file)
 
+        random_uuid = uuid.uuid4()
+
         output_data = {
             "dataType": "csa-ai-foundation-model-api-clients-JSON-output",
             "dataVersion": "0.2",
+            "uuid": random_uuid,
             "csa-ai-foundation-model-api-clients-version": self.csa_ai_foundation_model_api_clients_version,
             "arguments": {
                 "model": self.model_name,
