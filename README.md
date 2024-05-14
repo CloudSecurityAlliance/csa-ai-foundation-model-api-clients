@@ -10,7 +10,7 @@ This Python library (csa_ai_foundation_model_api_clients) provides API access to
 
 * Anthropic Claude 3
 * Google Gemini 1.5
-* OpenAI ChatGPT 4
+* OpenAI ChatGPT 4 gpt-4o
 
 and has plans to add:
 

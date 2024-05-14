@@ -11,9 +11,9 @@ source .venv/bin/activate
 
 # Install packages using pip3
 echo "Installing required packages..."
-pip3 install anthropic
-pip3 install google-generativeai
-pip3 install openai
+pip3 install anthropic --upgrade
+pip3 install google-generativeai --upgrade
+pip3 install openai --upgrade
 
 echo "Setup complete."
 echo ""
