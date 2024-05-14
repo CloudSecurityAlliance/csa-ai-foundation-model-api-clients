@@ -5,7 +5,7 @@ from google.generativeai import types
 import datetime
 
 def generate_response(model_name, api_key, system_prompt, user_prompt, **kwargs):
-    TIME_START = datetime.datetime.now().isoformat()
+    TIME_START = datetime.datetime.now()
 
     genai.configure(api_key=api_key)
 
@@ -25,12 +25,8 @@ def generate_response(model_name, api_key, system_prompt, user_prompt, **kwargs)
 
     response = gemini_model.generate_content(user_prompt, generation_config=config)
 
-    TIME_FINISHED = datetime.datetime.now().isoformat()
-
-    time_start = datetime.datetime.fromisoformat(TIME_START)
-    time_complete = datetime.datetime.fromisoformat(TIME_FINISHED)
-
-    duration = time_complete - time_start
+    TIME_FINISHED = datetime.datetime.now()
+    duration = TIME_START - TIME_FINISHED
     TIME_TO_RUN = duration.total_seconds()
 
     try:
@@ -48,8 +44,8 @@ def generate_response(model_name, api_key, system_prompt, user_prompt, **kwargs)
         "status": "success",
         "model_name": model_name,
         "temperature": temperature,
-        "ai_query_time": TIME_START,
-        "ai_response_time": TIME_FINISHED,
+        "ai_query_time": TIME_START.isoformat(),
+        "ai_response_time": TIME_FINISHED.isoformat(),
         "ai_runtime": TIME_TO_RUN,
         "tokens_input": None,
         "tokens_output": None,
