@@ -22,7 +22,7 @@ def generate_response(model_name, api_key, system_prompt, user_prompt, **kwargs)
     )
 
     TIME_FINISHED = datetime.datetime.now()
-    duration = TIME_START - TIME_FINISHED
+    duration = TIME_FINISHED - TIME_START
     TIME_TO_RUN = duration.total_seconds()
 
     try:

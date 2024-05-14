@@ -26,7 +26,7 @@ def generate_response(model_name, api_key, system_prompt, user_prompt, **kwargs)
     response = gemini_model.generate_content(user_prompt, generation_config=config)
 
     TIME_FINISHED = datetime.datetime.now()
-    duration = TIME_START - TIME_FINISHED
+    duration = TIME_FINISHED - TIME_START
     TIME_TO_RUN = duration.total_seconds()
 
     try:
