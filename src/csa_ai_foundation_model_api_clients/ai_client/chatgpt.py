@@ -50,7 +50,7 @@ def generate_response(model_name, api_key, system_prompt, user_prompt, **kwargs)
         "tokens_output": tokens_output,
         "tokens_total": total_tokens,
         "ai_response_http_status_code": None,
-        "ai_response_stop_reason": None,
+        "ai_response_stop_reason": completion.choices[0].message.stop_reason,
         "ai_response_data": response_message
     }
 
