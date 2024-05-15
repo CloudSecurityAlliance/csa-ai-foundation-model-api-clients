@@ -2,7 +2,8 @@
 
 ## Code
 
-* fix arguments to handle strings OR files for both library and command line (how to fix __init__?)
+* add --api-key support, NAME_OF_KEY_TO_LOOK_FOR, no fall back
+* fix arguments to handle strings OR files for command line options
 * fix output and move to separate function
 * JSON schema for output format, standardize on a single format with options for each backend
 * handle error conditions (mostly rate limiting errors)
@@ -19,6 +20,7 @@ Future:
 * Break out API key code so it can be an env variable, a config file, IAM options
 * How to handle multiple round conversations, JSON input?
 * Additional tools/inputs (e.g. images)
+* Context caching for longer prompts https://ai.google.dev/gemini-api/docs/caching
 
 ## Tests
 
