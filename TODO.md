@@ -13,6 +13,7 @@
 
 Future:
 
+* add batch processing support (https://platform.openai.com/docs/api-reference/batch/object)
 * for sub 1000 max_tokens put the "max_tokens: X" into the system prompt at the top
 * figure out if we can generate JSON/markdown/etc responses in a more generic way (e.g. system prompt with exmaple output?)
 * add option to wrap user data in JSON if it's not already JSON?
