@@ -11,7 +11,7 @@ class FoundationModelAPIClient:
         #
         # Increment this when updating the model
         #
-        self.csa_ai_foundation_model_api_clients_version = "0.1.19"
+        self.csa_ai_foundation_model_api_clients_version = "0.1.20"
         self.model = model
         self.api_key = api_key or self.get_model_api_key()
         self.model_name = self.get_model_mapping()
@@ -69,7 +69,7 @@ class FoundationModelAPIClient:
         output_data = {
             "dataType": "csa-ai-foundation-model-api-clients-JSON-output",
             "dataVersion": "0.2",
-            "uuid": random_uuid,
+            "uuid": str(random_uuid),
             "csa-ai-foundation-model-api-clients-version": self.csa_ai_foundation_model_api_clients_version,
             "arguments": {
                 "model": self.model_name,
