@@ -3,13 +3,14 @@
 ## Code
 
 * add --api-key support, NAME_OF_KEY_TO_LOOK_FOR, no fall back
+* add support for response_format
 * fix arguments to handle strings OR files for command line options
 * fix output and move to separate function
 * JSON schema for output format, standardize on a single format with options for each backend
 * handle error conditions (mostly rate limiting errors)
 * can we fix the relative import path so this tool works as a command line tool? Do we simply need to make a seperate .py?
 * max_retries (disable retries by default?)
-* timeout (120 seocnds?)
+* timeout (120 seconds?)
 
 Future:
 
@@ -22,6 +23,14 @@ Future:
 * How to handle multiple round conversations, JSON input?
 * Additional tools/inputs (e.g. images)
 * Context caching for longer prompts https://ai.google.dev/gemini-api/docs/caching
+
+## Docs for items
+
+### response_format
+
+* "response_format" https://platform.openai.com/docs/api-reference/audio/createTranscription
+* https://docs.anthropic.com/en/docs/control-output-format
+* "response_mime_type" https://ai.google.dev/gemini-api/docs/api-overview#json
 
 ## Tests
 
