@@ -11,7 +11,7 @@ class FoundationModelAPIClient:
         #
         # Increment this when updating the model
         #
-        self.csa_ai_foundation_model_api_clients_version = "0.1.21"
+        self.csa_ai_foundation_model_api_clients_version = "0.1.23"
         self.model = model
         self.api_key = api_key or self.get_model_api_key()
         self.model_name = self.get_model_mapping()
