@@ -11,7 +11,7 @@ class FoundationModelAPIClient:
         #
         # Increment this when updating the model
         #
-        self.csa_ai_foundation_model_api_clients_version = "0.1.23"
+        self.csa_ai_foundation_model_api_clients_version = "0.1.24"
         self.model = model
         self.api_key = api_key or self.get_model_api_key()
         self.model_name = self.get_model_mapping()
@@ -106,8 +106,8 @@ class FoundationModelAPIClient:
             'claude': 'claude-3-5-sonnet-20240620',
             'claude-haiku': 'claude-3-haiku-20240307',
             'claude-sonnet': 'claude-3-5-sonnet-20240620',
-            'claude-sonnet-3-5': 'claude-3-5-sonnet-20240620'
-            'claude-sonnet-3-0': 'claude-3-sonnet-20240229'
+            'claude-sonnet-3-5': 'claude-3-5-sonnet-20240620',
+            'claude-sonnet-3-0': 'claude-3-sonnet-20240229',
             'claude-opus': 'claude-3-opus-20240229',
             # TODO: find API call for gemini models
             'gemini': 'gemini-1.5-pro-latest'
