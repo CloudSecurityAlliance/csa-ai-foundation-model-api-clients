@@ -43,6 +43,33 @@ Future:
 
 * move to poetry
 
-Future:
+## Future
 
 * figure out GitHub trusted publishing to PyPi
+
+## Specific notres
+
+### JSON output:
+
+## Future notes:
+
+This library shouldn't be needed long term:
+
+chatgpt:
+
+To prevent these errors and improve model performance, when using gpt-4o, gpt-4-turbo, or gpt-3.5-turbo, you can set response_format to { "type": "json_object" } to enable JSON mode. When JSON mode is enabled, the model is constrained to only generate strings that parse into valid JSON object.
+
+https://platform.openai.com/docs/guides/text-generation/json-mode
+
+claude:
+
+Not possible? Closest piece of documentation:
+
+https://docs.anthropic.com/en/docs/test-and-evaluate/strengthen-guardrails/increase-consistency#example-standardizing-customer-feedback
+
+gemini:
+
+Use response_schema
+
+https://ai.google.dev/gemini-api/docs/json-mode
+
